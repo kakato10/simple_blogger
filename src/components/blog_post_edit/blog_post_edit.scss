@@ -1,0 +1,19 @@
+.blog-post-edit {
+  .blog-post-form {
+    margin-bottom: 10px;
+
+    .material-input {
+      display: block !important;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .toggler {
+      width: 200px !important;
+    }
+  }
+
+}
