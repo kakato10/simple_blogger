@@ -24,7 +24,7 @@ export default class AllBlogPosts extends React.Component {
   render() {
     return (
       <div className="new-blog-post">
-        <PageHeader title="Newly added"/>
+        <PageHeader title="All Blog Posts"/>
         <BlogPostsList
           blogPosts={this.blogPosts}
           extended/>

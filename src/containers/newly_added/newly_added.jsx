@@ -7,13 +7,15 @@ export default class NewlyAdded extends React.Component {
   constructor(props) {
     super(props);
 
-    this.blogPosts = BlogPost.find();
+    const blogPostsCount = 15;
+
+    this.blogPosts = _.slice(BlogPost.find(), 0, blogPostsCount);
   }
 
   render() {
     return (
       <div className="new-blog-post">
-        <PageHeader title="Newly added"/>
+        <PageHeader title="Newly Added"/>
         <BlogPostsList blogPosts={this.blogPosts}/>
       </div>
     );
