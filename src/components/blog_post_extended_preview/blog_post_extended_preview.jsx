@@ -14,7 +14,9 @@ const chipStyles = {
 class BlogPostExtendedPreview extends React.Component {
   render() {
     return (
-      <BlogPostPreview blogPost={this.props.blogPost}>
+      <BlogPostPreview
+        blogPost={this.props.blogPost}
+        showImage={false}>
         <CardActions>
           <NavLink to={`/post/${this.props.blogPost.id}`}>
             <FlatButton

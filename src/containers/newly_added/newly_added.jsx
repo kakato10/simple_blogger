@@ -6,9 +6,8 @@ import BlogPost from '../../sources/blog_post';
 export default class NewlyAdded extends React.Component {
   constructor(props) {
     super(props);
-    const blogPosts = BlogPost.find();
 
-    this.blogPosts = blogPosts;
+    this.blogPosts = BlogPost.find();
   }
 
   render() {

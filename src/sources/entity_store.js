@@ -39,7 +39,7 @@ export default class EntityStore {
   }
 
   find(template) {
-    const entities = this._loadEntities();
+    const entities = _.orderBy(this._loadEntities(), ['created'], ['desc']);
 
     if (!template) {
       return entities;
@@ -72,7 +72,7 @@ export default class EntityStore {
     const updated = _.map(targets, target => _.assign(
         {},
         target,
-        _.defaults(updateTemplate, {updatedAt: moment.utc().valueOf()})
+        _.defaults(updateTemplate, {updated: moment.utc().valueOf()})
       ));
 
     this._store(rest.concat(updated));

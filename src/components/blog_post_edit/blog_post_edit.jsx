@@ -115,6 +115,13 @@ export default class BlogPostEdit extends React.Component {
             value={blogPost.content}
             fullWidth/>
           <TextField
+            hintText="Image URL"
+            floatingLabelText="Image URL"
+            className="material-input"
+            onChange={this.getOnChangeFn('imageUrl')}
+            value={blogPost.imageUrl}
+            fullWidth/>
+          <TextField
             hintText="Tags"
             floatingLabelText="Tags"
             className="material-input"

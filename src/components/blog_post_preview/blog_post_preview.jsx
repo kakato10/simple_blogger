@@ -1,7 +1,8 @@
 import React from 'react';
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardText, CardMedia, CardTitle} from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
 import moment from 'moment';
+import ReactMarkdown from 'react-markdown';
 
 import './blog_post_preview.scss';
 
@@ -26,13 +27,21 @@ export default class BlogPostPreview extends React.Component {
   }
 
   render() {
-    const {title, author, created, content, tags} = this.props.blogPost;
+    const {expand, showImage, blogPost} = this.props;
+    const {title, author, created, content, tags, imageUrl} = blogPost;
     const dateCreated = moment(created).format('MMMM Do YYYY, hh:mm');
 
     return (
-      <Card className="post-preview" style={{
-        marginBottom: 20
-      }}>
+      <Card
+        className="post-preview"
+        style={{
+          marginBottom: 20
+        }}>
+        { showImage && imageUrl &&
+          <CardMedia>
+            <img src={imageUrl} alt="Blog post"/>
+          </CardMedia>
+        }
         <CardHeader
           title={title}
           subtitle={`${author} posted on ${dateCreated}`}
@@ -42,8 +51,10 @@ export default class BlogPostPreview extends React.Component {
         <div className="tags">
           {this.renderTags(tags)}
         </div>
-        <CardText expandable>
-          {content}
+        <CardText
+          expandable
+          actAsExpander>
+          <ReactMarkdown source={content}/>
         </CardText>
         {this.props.children}
       </Card>
@@ -51,7 +62,12 @@ export default class BlogPostPreview extends React.Component {
   }
 }
 
+BlogPostPreview.defaultProps = {
+  showImage: true
+}
+
 BlogPostPreview.propTypes = {
   blogPost: React.PropTypes.object.isRequired,
   children: React.PropTypes.node,
+  showImage: React.PropTypes.bool
 };
