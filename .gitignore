@@ -27,7 +27,7 @@ build/Release
 
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+./**/node_modules
 jspm_packages
 
 # Bower
@@ -36,7 +36,7 @@ bower_components/
 # Optional npm cache directory
 .npm
 # Dist folder
-dist/
+./client/dist/
 
 # IDE/Editor data
 .idea/
